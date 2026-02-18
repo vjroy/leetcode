@@ -13,6 +13,8 @@ def bubble_sort(arr: list[int]) -> list[int]:
         
     return arr
 
+def insertion_sort(arr: list[int]) -> list[int]:
+
 print(arr)
 print(bubble_sort(arr))
 
