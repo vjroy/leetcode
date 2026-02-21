@@ -1,25 +1,24 @@
 from collections import Counter
 
-def findAnagram(s: str, t: str):
-    return Counter(s) == Counter(t)
-
 
 def groupAnagrams(strs: list[str]) -> list[list[str]]:
-    x = [[]]
-    seen = set()
+    x = [] 
+    seen = []
     for i in range(len(strs)):
-        index = 0
+        if seen.__contains__(strs[i]) == True:
+            continue
+        x.append([])
         for j in range(i, len(strs)):
-            if i == j:
-                seen.add(strs[i])
-                x[i][index].append(strs[i])
-                index += 1
+            if i == j and seen.__contains__(strs[j]) == False:
+                x[-1].append(strs[i])
+                seen.append(strs[i])
 
-            elif findAnagram(strs[i], strs[j]) and seen.__contains__(strs[i]) == False:
-                x[i][index].append(strs[i])
-                index += 1
-                seen.add(strs[i])
+            elif Counter(s) == Counter(t) and seen.__contains__(strs[j]) == False:
+                x[-1].append(strs[j])
+                seen.append(strs[j])
+            
+                
     return x
 
-strs = ["act","pots","tops","cat","stop","hat"]
+strs = ["a"]
 print(groupAnagrams(strs))
